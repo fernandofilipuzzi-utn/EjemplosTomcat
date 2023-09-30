@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/xml/doc-files/log4j.dtd">
+<log4j:configuration debug="false"
+	xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+	<appender name="STDOUT" class="org.apache.log4j.ConsoleAppender">
+		<param name="target" value="System.out" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd/HH:mm:ss.SSS/zzz}  %-5p  %-40.70C{6} %x - %m%n" />
+		</layout>
+	</appender>
+	
+	<appender name="productos" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="logs/productos.log" />
+		<param name="Append" value="true" />
+		<param name="MaxFileSize" value="200MB" />
+		<param name="MaxBackupIndex" value="3" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" 
+					value="%d{yyyy-MM-dd/HH:mm:ss.SSS/zzz}  %-5p  %-40.70C{6} %x - %m%n" />
+		</layout>
+	</appender>
+		
+	<logger name="com.adobe" additivity="false">
+		<level value="DEBUG" />
+		<appender-ref ref="productos" />
+		<appender-ref ref="STDOUT" />
+	</logger>
+
+	<!-- Hibernate -->
+	<logger name="org.hibernate">
+		<level value="WARN" />
+		<appender-ref ref="productos" />		
+		<appender-ref ref="STDOUT" />
+	</logger>
+
+	<!-- Apache Commons -->
+	<logger name="org.apache.commons">
+		<level value="INFO" />
+		<appender-ref ref="productos" />
+		<appender-ref ref="STDOUT" />
+	</logger>
+
+	<!-- Apache Catalina -->
+	<logger name="org.apache.catalina">
+		<level value="INFO" />
+		<appender-ref ref="productos" />
+		<appender-ref ref="STDOUT" />
+	</logger>
+
+	<!-- Apache Coyote -->
+	<logger name="org.apache.coyote">
+		<level value="INFO" />
+		<appender-ref ref="productos" />
+		<appender-ref ref="STDOUT" />
+	</logger>
+
+	<logger name="net">
+		<level value="WARN" />
+		<appender-ref ref="productos" />
+		<appender-ref ref="STDOUT" />
+	</logger>	
+	
+	<category name="org.springframework" additivity="true">
+		<priority value="WARN" />
+		<appender-ref ref="productos" />
+		<appender-ref ref="STDOUT" />		
+	</category>
+	
+	<root>
+		<priority value="WARN" />	
+		<appender-ref ref="productos" />
+		<appender-ref ref="STDOUT" />
+	</root>	
+		
+</log4j:configuration>

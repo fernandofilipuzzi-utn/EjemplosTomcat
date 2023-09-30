@@ -5,9 +5,6 @@ servlent
 
 **Ejemplo 2 **
 
-<br/>
-<img src="https://github.com/fernandofilipuzzi-utn/EjemplosTablero/blob/main/TableroConPanel/TableroConPanel/docs/Formulario.jpg"/>
-<br/>
 
 **Ejemplo 3 **
 
